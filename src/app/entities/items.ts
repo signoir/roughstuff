@@ -1,6 +1,6 @@
 /*
  * Copyright(c) 2019. All rights reserved.
- * Last modified 6/2/19 1:41 PM
+ * Last modified 6/3/19 2:41 PM
  */
 
 /*
@@ -10,4 +10,10 @@
 
 import { Item } from './Item';
 
-export type Items = Item[];
+// export type Items = Item[];
+export interface Items {
+  offset: number;
+  limit: number;
+  total?: number;
+  results: Item[];
+}
