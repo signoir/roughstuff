@@ -1,6 +1,12 @@
+/*
+ * Copyright(c) 2019. All rights reserved.
+ * Last modified 6/3/19 1:56 PM
+ */
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { ComponentsModule } from './components/components.module';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -8,16 +14,25 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TimeAgoPipe } from './components/time-ago/time-ago.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations   : [
+    AppComponent,
+    TimeAgoPipe
+  ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [
+  imports        : [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    ComponentsModule
+  ],
+  providers      : [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
-  bootstrap: [AppComponent]
+  bootstrap      : [AppComponent]
 })
 export class AppModule {}
