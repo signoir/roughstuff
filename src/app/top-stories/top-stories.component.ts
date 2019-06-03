@@ -1,6 +1,11 @@
 /*
+ * top-stories.component.ts
+ * Created by @anonymoussc on 06/03/2019 4:51 PM.
+ */
+
+/*
  * Copyright(c) 2019. All rights reserved.
- * Last modified 6/3/19 4:42 PM
+ * Last modified 6/3/19 4:54 PM
  */
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
