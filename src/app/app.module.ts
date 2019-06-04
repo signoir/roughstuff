@@ -1,12 +1,13 @@
 /*
  * Copyright(c) 2019. All rights reserved.
- * Last modified 6/3/19 1:56 PM
+ * Last modified 6/3/19 2:27 PM
  */
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { ComponentsModule } from './components/components.module';
+import { ServicesModule } from './services/services.module';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -26,7 +27,8 @@ import { TimeAgoPipe } from './components/time-ago/time-ago.pipe';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    ServicesModule
   ],
   providers      : [
     StatusBar,
