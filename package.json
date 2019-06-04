@@ -27,6 +27,7 @@
     "cordova-android"                  : "8.0.0",
     "cordova-ios"                      : "5.0.1",
     "core-js"                          : "^2.5.4",
+    "lodash.range"                     : "^3.2.0",
     "moment"                           : "^2.24.0",
     "rxjs"                             : "~6.5.1",
     "tslib"                            : "^1.9.0",
