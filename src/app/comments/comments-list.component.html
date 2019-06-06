@@ -1,0 +1,21 @@
+<!--
+  ~ Copyright(c) 2019. All rights reserved.
+  ~ Last modified 5/29/19 9:35 AM
+  -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Comments</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <app-comments [items]="items$ | async"></app-comments>
+  <ion-infinite-scroll (ionInfinite)="load($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
