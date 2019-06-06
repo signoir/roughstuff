@@ -1,14 +1,34 @@
+/*
+ * Copyright(c) 2019. All rights reserved.
+ * Last modified 6/7/19 6:33 AM
+ */
+
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/services/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  {path         : 'top-stories',
+    loadChildren: 'app/top-stories/top-stories.module#TopStoriesModule'
+  },
+  {path         : 'comments/:id',
+    loadChildren: 'app/comments/comments.module#CommentsModule'
+  },
+  {path         : 'favorites',
+    loadChildren: 'app/favorites-list/favorites-list.module#FavoritesListModule',
+    canActivate : [AuthGuard]
+  },
+  {path       : '',
+    redirectTo: '/top-stories',
+    pathMatch : 'full'
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, {
+      useHash: true,
+    })
   ],
   exports: [RouterModule]
 })
