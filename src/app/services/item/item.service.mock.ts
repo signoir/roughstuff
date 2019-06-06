@@ -1,36 +1,39 @@
 /*
- * item.service.mock.ts
- * Created by @anonymoussc on 06/03/2019 5:01 PM.
- */
-
-/*
  * Copyright(c) 2019. All rights reserved.
- * Last modified 6/4/19 3:32 PM
+ * Last modified 6/7/19 6:30 AM
  */
 
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import * as range from 'lodash.range';
-import { Items } from '../../entities/items';
-import { Item } from '../../entities/item';
-import { ItemService } from './item.service';
+import { Items } from '../../models/items';
+import { Item } from '../../models/item';
+import { Query } from './item.service';
+import { map, startWith } from 'rxjs/operators';
 
 @Injectable()
-export class ItemServiceMock extends ItemService {
-  load(offset?: number, limit?: number): Observable<Items> {
-    const results: Item[] = range(offset, offset + limit).map(index => ({
-      id   : index,
-      title: `Item ${index + 1}`,
-      url  : `http://www.example.com/item${index}`,
-      by   : `demo`,
-      time : new Date().getTime() / 1000,
-      score: index,
-    }));
-    return of({
-      offset,
-      limit,
-      total: offset + limit,
-      results,
-    });
+export class ItemServiceMock {
+  private queries: Subject<Query> = new Subject<Query>();
+
+  load(query: Query) {
+    this.queries.next(query);
   }
+
+  get(): Observable<Items> {
+    return this.queries.pipe(
+      map(query => generateItems(query.offset, query.limit)),
+      startWith([])
+    );
+  }
+}
+
+export function generateItems(offset: number, limit: number): Item[] {
+  return range(offset, offset + limit).map(index => ({
+    id   : index,
+    title: `Item ${index + 1}`,
+    url  : `http://www.example.com/item${index}`,
+    by   : `demo`,
+    time : new Date().getTime() / 1000,
+    score: index,
+  }));
 }
