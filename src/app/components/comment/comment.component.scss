@@ -1,0 +1,12 @@
+/*!
+ * Copyright(c) 2019. All rights reserved.
+ * Last modified 6/7/19 6:27 AM
+ */
+
+:host {
+  margin-top : 5px;
+}
+
+div > span:not(:last-child) {
+  padding-right : 10px;
+}

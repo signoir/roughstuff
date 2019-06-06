@@ -1,22 +1,27 @@
 /*
  * Copyright(c) 2019. All rights reserved.
- * Last modified 6/3/19 1:59 PM
+ * Last modified 6/7/19 6:27 AM
  */
 
-import { Component, Input, OnInit } from '@angular/core';
-import { Items } from '../../entities/items';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Items } from '../../models/items';
+import { Item } from '../../models/item';
 
 @Component({
   selector   : 'app-items',
   templateUrl: './items.component.html',
-  styleUrls  : ['./items.component.scss'],
+  styleUrls  : ['./items.component.scss']
 })
-export class ItemsComponent implements OnInit {
-
+export class ItemsComponent {
   @Input() items: Items;
+  @Output() toOpen  = new EventEmitter<string>();
+  @Output() toShare = new EventEmitter<Item>();
 
-  constructor() { }
+  openPage(url) {
+    this.toOpen.emit(url);
+  }
 
-  ngOnInit() {}
-
+  share(item) {
+    this.toShare.emit(item);
+  }
 }

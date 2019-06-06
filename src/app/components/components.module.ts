@@ -1,16 +1,26 @@
 /*
  * Copyright(c) 2019. All rights reserved.
- * Last modified 6/3/19 2:01 PM
+ * Last modified 6/7/19 6:27 AM
  */
 
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ItemComponent } from './item/item.component';
+import { ItemsComponent } from './items/items.component';
+import { CommentComponent } from './comment/comment.component';
+import { CommentsComponent } from './comments/comments.component';
+import { TimeAgoPipe } from './time-ago/time-ago.pipe';
+import { RouterModule } from '@angular/router';
+import { FavoritesModule } from '../favorites/favorites.module';
 
 @NgModule({
-  schemas     : [CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [],
   imports     : [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule,
+    FavoritesModule,
+  ],
+  exports     : [ItemsComponent, CommentsComponent],
+  declarations: [ItemComponent, ItemsComponent, CommentComponent, CommentsComponent, TimeAgoPipe],
+  schemas     : [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ComponentsModule {}
