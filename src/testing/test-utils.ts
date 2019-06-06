@@ -1,17 +1,13 @@
 /*
  * Copyright(c) 2019. All rights reserved.
- * Last modified 6/2/19 4:35 PM
- */
-
-/*
- * test-utils.ts
- * Created by @anonymoussc on 06/02/2019 4:32 PM.
+ * Last modified 6/7/19 6:39 AM
  */
 
 import { TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 export class TestUtils {
   static beforeEachCompiler(components: Array<any>, providers: Array<any> = []): Promise<{ fixture: any, instance: any }> {
@@ -36,7 +32,8 @@ export class TestUtils {
       ],
       imports     : [
         FormsModule,
-        IonicModule,
+        IonicModule.forRoot(),
+        RouterTestingModule.withRoutes([]),
       ],
     });
   }
