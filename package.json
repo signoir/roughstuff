@@ -65,7 +65,7 @@
     "lodash.concat"                    : "4.5.0",
     "lodash.isequal"                   : "4.5.0",
     "lodash.range"                     : "3.2.0",
-    "moment"                           : "2.24.0",
+    "moment"                           : "2.29.2",
     "rxjs"                             : "6.3.3",
     "sw-toolbox"                       : "3.6.0",
     "zone.js"                          : "0.8.29"
